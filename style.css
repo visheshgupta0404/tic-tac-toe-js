@@ -1,0 +1,31 @@
+#box {
+  display: flex;
+  margin-top: 10vw;
+  margin-left: 40vw;
+}
+
+#gamebox {
+  display: block;
+  margin: 0 auto;
+}
+.col {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  align-content: center;
+  border: 1px solid black;
+}
+
+#game_heading {
+  text-decoration-line: underline;
+  text-align: center;
+}
+
+#result {
+  text-align: center;
+}
+
+#restart {
+  display: block;
+  margin: 0 auto;
+}
