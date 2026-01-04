@@ -6,7 +6,9 @@
 
 #gamebox {
   display: block;
-  margin: 0 auto;
+  margin: 3 auto;
+  cursor:pointer
+  
 }
 .col {
   height: 60px;
@@ -17,9 +19,26 @@
 }
 
 #game_heading {
-  text-decoration-line: underline;
+  text-decoration: underline dashed red;
   text-align: center;
 }
+
+#game_heading {
+  display: block;
+  animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 #result {
   text-align: center;
@@ -28,4 +47,5 @@
 #restart {
   display: block;
   margin: 0 auto;
+  cursor:pointer
 }

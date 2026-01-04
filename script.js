@@ -18,11 +18,11 @@ function checkWinner() {
     (array[3] !== null && array[3] === array[4] && array[3] === array[5]) ||
     (array[6] !== null && array[6] === array[7] && array[6] === array[8])
   ) {
-    result.style.color = "red";
+    result.style.color = "red";  
     result.innerText = `Winner is ${currentPlayer}`;
   } else if (!array.includes(null)) {
     result.style.color = "red";
-    result.innerText = "Draw";
+    result.innerText = "Draw Press restart";
   }
 }
 
