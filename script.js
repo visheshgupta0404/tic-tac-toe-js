@@ -19,15 +19,17 @@ function checkWinner() {
     (array[6] !== null && array[6] === array[7] && array[6] === array[8])
   ) {
     result.style.color = "red";
-    result.innerHTML = `<h3>Winner is ${currentPlayer}<br><br>Game restart in 3 sec</h3>`;
-    setTimeout(()=>{
-      window.location.reload()
-    },3*1000)
-    
+    result.innerHTML = `<h3>Winner is ${currentPlayer}<br><br> Game auto restart in 3 sec</h3>`;
+    setTimeout(() => {
+      window.location.reload();
+    }, 3 * 1000);
   } else if (!array.includes(null)) {
     result.style.color = "red";
     result.innerText = "Draw Press restart";
-    
+    result.innerHTML = `<h3>Draw Press restart<br><br> Game auto restart in 3 sec</h3>`;
+    setTimeout(() => {
+      window.location.reload();
+    }, 3 * 1000);
   }
 }
 
