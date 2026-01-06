@@ -1,29 +1,35 @@
 #box {
   display: flex;
-  margin-top: 10vw;
-  margin-left: 40vw;
+  margin-top: 8vw;
+  margin-left: 42.5vw;
+  /* scale: 1.5; */
 }
 
 #gamebox {
   display: block;
-  margin: 3 auto;
-  cursor:pointer
+  cursor:pointer;
+  scale: 1.5;
   
 }
 .col {
   height: 60px;
   width: 60px;
+  font-size: xx-large;
+  font-weight: bold;
   text-align: center;
   align-content: center;
   border: 1px solid black;
 }
 
+
 #game_heading {
   text-decoration: underline dashed red;
   text-align: center;
+  scale: 1.7;
 }
 
 #game_heading {
+  margin-top: 15vh;
   display: block;
   animation: slideDown 1s ease forwards;
 }
@@ -42,10 +48,16 @@
 
 #result {
   text-align: center;
+  justify-content: center;
+  scale: 1.2;
 }
 
 #restart {
   display: block;
-  margin: 0 auto;
+  margin-top: 10vh;
+  margin-left: 47.5vw;
   cursor:pointer
+}
+body{
+  background-image: url("background.png");
 }
