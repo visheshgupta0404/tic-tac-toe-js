@@ -1,8 +1,7 @@
 #box {
   display: flex;
   margin-top: 8vw;
-  margin-left: 42.5vw;
-  /* scale: 1.5; */
+  margin-left: 40.5vw;
 }
 
 #gamebox {
@@ -55,7 +54,7 @@
 #restart {
   display: block;
   margin-top: 10vh;
-  margin-left: 47.5vw;
+  margin-left: 46.5vw;
   cursor:pointer
 }
 body{
