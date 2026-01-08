@@ -4,32 +4,95 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <h1 id="game_heading">TIC TAC TOE GAME</h1>
-    <h3 id="result">Now <span id="playerTurn">X</span> Turn</h3>
-    <div id="gamebox">
-      <div id="box">
-        <div id="r1">
-          <div onclick="handleClick(this)" id="0" class="col"></div>
-          <div onclick="handleClick(this)" id="1" class="col"></div>
-          <div onclick="handleClick(this)" id="2" class="col"></div>
+    <div id="background-animation"></div>
+    
+    <div id="home-page">
+      <h1 class="main-title">TIC <span class="gold-word">TAC</span> TOE</h1>
+      
+      <div class="modes-container">
+        
+        <div class="glass-container">
+          <div class="glass-box">
+            <div class="card-content">
+                <img src="images/vscomputer.png" alt="Computer Icon" class="card-img">
+                <span class="card-title">Computer</span>
+                <p>Play against Computer</p>
+            </div>
+            
+            <button class="mode-btn" id="btn-computer">Play Now</button>
+          </div>
         </div>
-        <div id="r2">
-          <div onclick="handleClick(this)" id="3" class="col"></div>
-          <div onclick="handleClick(this)" id="4" class="col"></div>
-          <div onclick="handleClick(this)" id="5" class="col"></div>
+
+        <div class="glass-container">
+          <div class="glass-box">
+            <div class="card-content">
+                <img src="images/vsoffline.png" alt="Friends Icon" class="card-img">
+                <span class="card-title">Offline</span>
+                <p>2 Players</p>
+            </div>
+            <button class="mode-btn" id="btn-offline">Play Now</button>
+          </div>
         </div>
-        <div id="r3">
-          <div onclick="handleClick(this)" id="6" class="col"></div>
-          <div onclick="handleClick(this)" id="7" class="col"></div>
-          <div onclick="handleClick(this)" id="8" class="col"></div>
+
+        <div class="glass-container">
+          <div class="glass-box">
+            <div class="card-content">
+                <img src="images/online.png" alt="Online Icon" class="card-img">
+                <span class="card-title">Online</span>
+                <p>Multiplayer Web</p>
+            </div>
+            <button class="mode-btn" id="btn-online">Play Now</button>
+          </div>
         </div>
+
       </div>
     </div>
-    <br />
-    <button id="restart">Restart</button>
+
+    <div id="game-container" class="hidden">
+      <h1 class="main-title">TIC <span class="gold-word">TAC</span> TOE</h1>
+  
+      
+      <h3 id="result">Player <span id="playerTurn">X</span>'s Turn</h3>
+      
+      <div id="gamebox">
+        <div id="box">
+          <div id="r1">
+            <div onclick="handleClick(this)" id="0" class="col"></div>
+            <div onclick="handleClick(this)" id="1" class="col"></div>
+            <div onclick="handleClick(this)" id="2" class="col"></div>
+          </div>
+          <div id="r2">
+            <div onclick="handleClick(this)" id="3" class="col"></div>
+            <div onclick="handleClick(this)" id="4" class="col"></div>
+            <div onclick="handleClick(this)" id="5" class="col"></div>
+          </div>
+          <div id="r3">
+            <div onclick="handleClick(this)" id="6" class="col"></div>
+            <div onclick="handleClick(this)" id="7" class="col"></div>
+            <div onclick="handleClick(this)" id="8" class="col"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button id="restart">Restart Game</button>
+        <button id="back-to-home">Back to Home</button>
+      </div>
+    </div>
+
+    <div id="wip-modal" class="hidden">
+      <div class="modal-content">
+        <div class="icon">🚧</div>
+        <h2>Work in Progress</h2>
+        <p>Multiplayer servers are currently being set up.</p>
+        <p>Check back later for online play!</p>
+        <button id="close-modal">Got it!</button>
+      </div>
+    </div>
+
   </body>
 </html>
