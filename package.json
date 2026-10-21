@@ -1,0 +1,1 @@
+{"name":"tic-tac-toe","private":true,"scripts":{"test":"node --test tests/*.test.cjs","check":"node --check game.js && node --check script.js"},"engines":{"node":">=20"}}

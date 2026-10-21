@@ -1,54 +1,46 @@
-let currentPlayer = "O";
-
-let playerTurn = document.getElementById("playerTurn");
-let result = document.getElementById("result");
-let restart = document.getElementById("restart");
-
-let array = Array(9).fill(null);
-// console.log(array);
-
-function checkWinner() {
-  if (
-    (array[0] !== null && array[0] === array[3] && array[0] === array[6]) ||
-    (array[0] !== null && array[0] === array[4] && array[0] === array[8]) ||
-    (array[0] !== null && array[0] === array[1] && array[0] === array[2]) ||
-    (array[1] !== null && array[1] === array[4] && array[1] === array[7]) ||
-    (array[2] !== null && array[2] === array[5] && array[2] === array[8]) ||
-    (array[2] !== null && array[2] === array[4] && array[2] === array[6]) ||
-    (array[3] !== null && array[3] === array[4] && array[3] === array[5]) ||
-    (array[6] !== null && array[6] === array[7] && array[6] === array[8])
-  ) {
-    result.style.color = "red";
-    result.innerHTML = `<h3>Winner is ${currentPlayer}<br><br> Game auto restart in 3 sec</h3>`;
-    setTimeout(() => {
-      window.location.reload();
-    }, 3 * 1000);
-  } else if (!array.includes(null)) {
-    result.style.color = "red";
-    result.innerText = "Draw Press restart";
-    result.innerHTML = `<h3>Draw Press restart<br><br> Game auto restart in 3 sec</h3>`;
-    setTimeout(() => {
-      window.location.reload();
-    }, 3 * 1000);
-  }
+"use strict";
+let state = TicTacToe.newGame();
+let timer = null;
+const scores = { X: 0, O: 0, draws: 0 };
+const cells = [...document.querySelectorAll(".cell")];
+const result = document.getElementById("result");
+const autoRestart = document.getElementById("auto-restart");
+function render() {
+  const over = state.winner || state.draw;
+  cells.forEach((cell, index) => {
+    cell.textContent = state.board[index] || "";
+    cell.disabled = Boolean(over || state.board[index]);
+    cell.dataset.player = state.board[index] || "";
+    cell.classList.toggle("winning", state.winningLine.includes(index));
+    cell.setAttribute("aria-label", `Row ${Math.floor(index / 3) + 1}, column ${index % 3 + 1}: ${state.board[index] || "empty"}`);
+  });
+  const message = state.winner ? `${state.winner} wins!` : state.draw ? "It's a draw." : `${state.turn}'s turn`;
+  result.textContent = message + (over && autoRestart.checked ? " Next round in 3 seconds." : "");
+  document.getElementById("score-x").textContent = scores.X;
+  document.getElementById("score-o").textContent = scores.O;
+  document.getElementById("score-draws").textContent = scores.draws;
 }
-
-function handleClick(el) {
-  if (array[el.id] !== null) return;
-  playerTurn.innerText = currentPlayer;
-  currentPlayer === "X" ? (currentPlayer = "O") : (currentPlayer = "X");
-  array[el.id] = currentPlayer;
-  console.log(array);
-  if (currentPlayer === "X") {
-    el.style.color = "#1F3A8A";
-    el.innerText = currentPlayer;
-  } else {
-    el.style.color = "#C2410C";
-    el.innerText = currentPlayer;
-  }
-  checkWinner();
+function cancelRestart() { clearTimeout(timer); timer = null; }
+function nextRound(focus = false) {
+  cancelRestart();
+  state = TicTacToe.newGame();
+  render();
+  if (focus) cells[0].focus();
 }
-
-restart.addEventListener("click", () => {
-  window.location.reload();
-});
+function scheduleRestart() {
+  cancelRestart();
+  if ((state.winner || state.draw) && autoRestart.checked) timer = setTimeout(() => nextRound(true), 3000);
+}
+cells.forEach((cell, index) => cell.addEventListener("click", () => {
+  const next = TicTacToe.play(state, index);
+  if (next === state) return;
+  state = next;
+  if (state.winner) scores[state.winner]++;
+  else if (state.draw) scores.draws++;
+  render();
+  scheduleRestart();
+  if (!state.winner && !state.draw) cells.find(button => !button.disabled)?.focus();
+}));
+document.getElementById("restart").addEventListener("click", () => nextRound(true));
+autoRestart.addEventListener("change", () => { scheduleRestart(); render(); });
+render();
