@@ -1,35 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic Tac Toe</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1 id="game_heading">TIC TAC TOE GAME</h1>
-    <h3 id="result">Now <span id="playerTurn">X</span> Turn</h3>
-    <div id="gamebox">
-      <div id="box">
-        <div id="r1">
-          <div onclick="handleClick(this)" id="0" class="col"></div>
-          <div onclick="handleClick(this)" id="1" class="col"></div>
-          <div onclick="handleClick(this)" id="2" class="col"></div>
-        </div>
-        <div id="r2">
-          <div onclick="handleClick(this)" id="3" class="col"></div>
-          <div onclick="handleClick(this)" id="4" class="col"></div>
-          <div onclick="handleClick(this)" id="5" class="col"></div>
-        </div>
-        <div id="r3">
-          <div onclick="handleClick(this)" id="6" class="col"></div>
-          <div onclick="handleClick(this)" id="7" class="col"></div>
-          <div onclick="handleClick(this)" id="8" class="col"></div>
-        </div>
-      </div>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A two-player Tic Tac Toe game with keyboard controls, round scores, and optional automatic restart.">
+  <title>Tic Tac Toe</title><link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script><script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">TWO PLAYERS / ONE BOARD</p><h1>Tic Tac Toe</h1><p class="intro">A little friendly competition. X goes first.</p>
+    <dl class="scores" aria-label="Session scores"><div><dt>X wins</dt><dd id="score-x">0</dd></div><div><dt>Draws</dt><dd id="score-draws">0</dd></div><div><dt>O wins</dt><dd id="score-o">0</dd></div></dl>
+    <p id="result" role="status" aria-live="polite"></p>
+    <div class="board" role="group" aria-label="Tic Tac Toe board">
+      <button type="button" class="cell"></button><button type="button" class="cell"></button><button type="button" class="cell"></button>
+      <button type="button" class="cell"></button><button type="button" class="cell"></button><button type="button" class="cell"></button>
+      <button type="button" class="cell"></button><button type="button" class="cell"></button><button type="button" class="cell"></button>
     </div>
-    <br />
-    <button id="restart">Restart</button>
-  </body>
+    <button id="restart" type="button">New round</button>
+    <label class="auto"><input type="checkbox" id="auto-restart" checked> Start next round automatically</label>
+    <p class="hint">Use Tab to choose a square and Enter or Space to play. Turn off automatic restart to keep the result on screen.</p>
+    <footer>Made by Vishesh Gupta · Scores last until you reload.</footer>
+  </main>
+</body>
 </html>
